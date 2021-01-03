@@ -18,10 +18,10 @@ var DecoderDictionary = map[string]string{
 	"5": "u",
 }
 
-func TranslateCodec(word string, Dictionary map[string]string) string {
+func TranslateCodec(word string, Dictionary map[string]string) string { // please, don't use upper-camel-case for parameters, as they are local for a func and thus can't be public
 	for key, value := range Dictionary {
 		word = strings.ReplaceAll(word, key, value)
-		word = strings.ReplaceAll(word, strings.ToUpper(key), value)
+		word = strings.ReplaceAll(word, strings.ToUpper(key), value) // it's more efficient to define upper case letters in the Dict as well to avoid additinal operations
 	}
 	return word
 }
